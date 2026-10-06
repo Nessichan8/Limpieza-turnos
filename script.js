@@ -48,6 +48,10 @@ function generarTabla(año, mes) {
   let semana = 1;
   const semanaActual = new Date(inicioSemana);
 
+  // Lunes de referencia: la semana del 28 sep 2026 usa el patrón 0 (Brenda, Inés, Irene)
+const referencia = new Date(2026, 8, 28);
+const MS_SEMANA = 7 * 24 * 60 * 60 * 1000;
+
   // Generar las semanas hasta cubrir todo el mes
   while (semanaActual <= ultimoDiaMes) {
 
@@ -87,8 +91,9 @@ function generarTabla(año, mes) {
     fila.appendChild(celdaSemana);
 
     // Asignación rotatoria de las tres tareas
-    const asignaciones =
-      patrones[(semana - 1) % patrones.length];
+const semanasDesdeRef = Math.round((semanaActual - referencia) / MS_SEMANA);
+const indice = ((semanasDesdeRef % patrones.length) + patrones.length) % patrones.length;
+const asignaciones = patrones[indice]; 
 
     for (let tarea = 0; tarea < 3; tarea++) {
 
