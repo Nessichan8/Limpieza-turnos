@@ -16,7 +16,7 @@ function generarTabla(año, mes) {
   const diaSemana = primerDiaMes.getDay(); // domingo = 0, lunes = 1...
   const diasDesdeLunes = diaSemana === 0 ? 6 : diaSemana - 1;
   
-  inicioSemana.setDate(primerDiaMes.getDate() - diasDesdeLunes;
+  inicioSemana.setDate(primerDiaMes.getDate() - diasDesdeLunes);
 
   const patrones = [
     ["Brenda", "Inés", "Irene"],
